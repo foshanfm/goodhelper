@@ -24,7 +24,6 @@
 
         </div>
 
-        @include('layouts._footer')
     </div>
 
     <!-- Scripts -->
