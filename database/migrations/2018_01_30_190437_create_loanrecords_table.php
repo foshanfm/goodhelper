@@ -3,13 +3,13 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoanrecordsTable extends Migration 
+class CreateLoanrecordsTable extends Migration
 {
 	public function up()
 	{
 		Schema::create('loanrecords', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_id')->index();
+            $table->string('order_id');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('category_id')->unsigned()->index();
             $table->integer('day')->unsigned();

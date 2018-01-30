@@ -4,5 +4,15 @@ namespace App\Models;
 
 class Loanrecord extends Model
 {
-    protected $fillable = ['order_id', 'user_id', 'category_id', 'day', 'loan', 'repayment_id'];
+    protected $fillable = ['day', 'loan', ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

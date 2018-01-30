@@ -6,6 +6,7 @@ use App\Models\Loanrecord;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoanrecordRequest;
+use Auth;
 
 class LoanrecordsController extends Controller
 {
@@ -16,8 +17,8 @@ class LoanrecordsController extends Controller
 
 	public function index()
 	{
-		$loanrecords = Loanrecord::paginate();
-		return view('loanrecords.index', compact('loanrecords'));
+        $loanrecords = loanrecord::with('user', 'category')->paginate(30);
+        return view('loanrecords.index', compact('loanrecords'));
 	}
 
     public function show(Loanrecord $loanrecord)
@@ -30,11 +31,16 @@ class LoanrecordsController extends Controller
 		return view('loanrecords.create_and_edit', compact('loanrecord'));
 	}
 
-	public function store(LoanrecordRequest $request)
+	public function store(LoanrecordRequest $request, Loanrecord $loanrecord)
 	{
-		$loanrecord = Loanrecord::create($request->all());
-		return redirect()->route('loanrecords.show', $loanrecord->id)->with('message', 'Created successfully.');
-	}
+        $loanrecord->fill($request->all());
+        $loanrecord->user_id = Auth::id();
+        $loanrecord->order_id = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+        $loanrecord->category_id = 0;
+        $loanrecord->save();
+
+        return redirect()->route('loanrecords.show', $loanrecord->id)->with('message', 'Created successfully.');
+    }
 
 	public function edit(Loanrecord $loanrecord)
 	{
@@ -57,4 +63,6 @@ class LoanrecordsController extends Controller
 
 		return redirect()->route('loanrecords.index')->with('message', 'Deleted successfully.');
 	}
+
+
 }

@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
 	{
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
 		\App\Models\Loanrecord::observe(\App\Observers\LoanrecordObserver::class);
+        \Carbon\Carbon::setLocale('zh');
 
         //
     }
