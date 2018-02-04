@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'LaraBBS') - 好帮手</title>
+    <title>@yield('title', '好帮手') - 好帮手</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
         @include('layouts._header')
 
         <div class="container">
-
+            @include('layouts._message')
             @yield('content')
 
         </div>

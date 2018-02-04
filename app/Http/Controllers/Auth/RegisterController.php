@@ -52,14 +52,18 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'captcha' => 'required|captcha',
-            'phone' => 'required|numeric|min:11'
+            'phone' => 'required|numeric|min:11',
+            'banknum' => 'required|numeric',
         ], [
-            'captcha.required' => '验证码不能为空',
-            'captcha.captcha' => '请输入正确的验证码',
-            'phone.required' => '手机不能为空',
-            'phone.numeric' => '手机只能为数字',
-            'phone.min' => '手机长度不对',
-            'phone.max' => '手机长度不对',
+            'captcha.required' => '验证码不能为空。',
+            'captcha.captcha' => '请输入正确的验证码。',
+            'phone.required' => '手机不能为空。',
+            'phone.numeric' => '手机只能为数字。',
+            'phone.min' => '手机长度不对。',
+            'banknum.numeric' => '银行卡号只能为数字。',
+            'banknum.required' => '银行卡号不能为空。',
+            'banknum.max' => '银行卡号长度不对。',
+            'banknum.min' => '银行卡号长度不对。',
         ]);
     }
 
@@ -76,6 +80,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'phone' => $data['phone'],
+            'banknum' => $data['banknum'],
         ]);
     }
 }

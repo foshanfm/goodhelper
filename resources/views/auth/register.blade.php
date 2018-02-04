@@ -39,6 +39,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('banknum') ? ' has-error' : '' }}">
+                            <label for="banknum" class="col-md-4 control-label">银行卡号</label>
+
+                            <div class="col-md-6">
+                                <input id="banknum" type="text" class="form-control" name="banknum" value="{{ old('banknum') }}" required>
+
+                                @if ($errors->has('banknum'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('banknum') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail 地址</label>
 

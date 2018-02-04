@@ -8,11 +8,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoanrecordRequest;
 use Auth;
 
+
 class LoanrecordsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => []]);
     }
 
 	public function index()
@@ -36,7 +37,7 @@ class LoanrecordsController extends Controller
         $loanrecord->fill($request->all());
         $loanrecord->user_id = Auth::id();
         $loanrecord->order_id = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
-        $loanrecord->category_id = 0;
+        $loanrecord->category_id = 1;
         $loanrecord->save();
 
         return redirect()->route('loanrecords.show', $loanrecord->id)->with('message', 'Created successfully.');
