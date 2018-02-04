@@ -19,7 +19,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group">
-                        <input class="form-control" type="integer" name="loan" value="{{ old('loan', $loanrecord->loan ) }}" placeholder="请填写金额" required/>
+                        <input class="form-control" type="integer" name="loan" value="{{ old('loan', $loanrecord->loan ) }}" placeholder="请填写金额。" required/>
                     </div>
 
 

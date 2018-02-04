@@ -31,7 +31,7 @@
                     <a href="{{ route('users.show', Auth::id()) }}" class="btn btn-default btn-block">
                         修改个人账户
                     </a>
-                    <a href="http://goodhelper.test/register" class="btn btn-default btn-block">
+                    <a href="#" class="btn btn-default btn-block">
                         借款记录
                     </a>
                 </div>

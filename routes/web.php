@@ -29,4 +29,4 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 Route::get('/users/{user}/record','UsersController@record')->name('users.record');
-Route::resource('loanrecords', 'LoanrecordsController', ['only' => ['index','show','create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('loanrecords', 'LoanrecordsController', ['only' => ['show','create', 'store', 'update', 'edit', 'destroy']]);

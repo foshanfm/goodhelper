@@ -3,6 +3,8 @@
     @foreach ($loanrecords as $loanrecord)
         <li class="list-group-item">
                 {{ $loanrecord->loan }}
+                {{ $loanrecord->day }}
+                {{ $loanrecord->user->name }}
         </li>
     @endforeach
 </ul>
