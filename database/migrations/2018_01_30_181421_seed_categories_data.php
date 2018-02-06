@@ -16,19 +16,16 @@ class SeedCategoriesData extends Migration
         //
         $categories = [
             [
-                'name'        => '借款申请中',
-            ],
-            [
-                'name'        => '废弃订单',
+                'name'        => '等待审核',
             ],
             [
                 'name'        => '已放款',
             ],
             [
-                'name'        => '还款申请中',
+                'name'        => '已还款',
             ],
             [
-                'name'        => '已还款',
+                'name'        => '借款驳回',
             ],
         ];
 
