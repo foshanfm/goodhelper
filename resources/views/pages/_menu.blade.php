@@ -24,7 +24,7 @@
                     <a href="{{ route('loanrecords.create') }}" class="btn btn-default btn-block">
                         <h3>我要借款</h3>
                     </a>
-                    <a href="{{ route('users.record', Auth::id()) }}" class="btn btn-default btn-block">
+                    <a href="{{ route('loanrecords.index') }}" class="btn btn-default btn-block">
                         <h3>借款记录</h3>
                     </a>
                     <a href="{{ route('users.show', Auth::id()) }}" class="btn btn-default btn-block">

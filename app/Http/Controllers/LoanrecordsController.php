@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoanrecordRequest;
 use Auth;
-
+use App\Http\Controllers\Loanrecords;
 
 class LoanrecordsController extends Controller
 {
@@ -21,6 +21,14 @@ class LoanrecordsController extends Controller
     //     $loanrecords = loanrecord::with('user', 'category')->paginate(30);
     //     return view('loanrecords.index', compact('loanrecords'));
 	// }
+    public function index(Loanrecord $loanrecord)
+    {
+           $id = Auth::id();
+           $loanrecord = Loanrecord::where('user_id', $id)
+                                  ->get();
+
+        return view('loanrecords.index',compact('loanrecord'));
+    }
 
     public function show(Loanrecord $loanrecord)
     {

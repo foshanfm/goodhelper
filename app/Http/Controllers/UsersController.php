@@ -15,11 +15,6 @@ class UsersController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function record(User $user)
-    {
-        $this->authorize('update', $user);
-        return view('users.record',compact('user'));
-    }
 
     public function update(UserRequest $request, User $user)
     {
