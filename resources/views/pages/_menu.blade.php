@@ -17,26 +17,24 @@
 </div>
 
 @else
-<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{{ route('loanrecords.create') }}" class="btn btn-default btn-block">
-                        我要借款
+                        <h3>我要借款</h3>
                     </a>
                     <a href="{{ route('users.record', Auth::id()) }}" class="btn btn-default btn-block">
-                        借款记录
+                        <h3>借款记录</h3>
                     </a>
                     <a href="{{ route('users.show', Auth::id()) }}" class="btn btn-default btn-block">
-                        修改个人账户
+                        <h3>修改个人账户</h3>
                     </a>
                     <a href="#" class="btn btn-default btn-block">
-                        借款记录
+                        <h3>借款记录</h3>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endguest

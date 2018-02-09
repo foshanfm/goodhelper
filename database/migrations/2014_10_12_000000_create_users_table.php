@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('banknum')->unique();
             $table->string('password');
+            $table->integer('quota')->unsigned()->default(200000);
             $table->rememberToken();
             $table->timestamps();
         });

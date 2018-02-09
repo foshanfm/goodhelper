@@ -12,8 +12,11 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                好帮手
+                <span class="glyphicon glyphicon-home"></span>
             </a>
+
+            <h4 class="navbar-text text-center">好帮手</h4>
+
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
