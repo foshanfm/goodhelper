@@ -6,10 +6,10 @@
         <div class="panel panel-default">
 
             <div class="panel-body">
-                <h2 class="text-center">
-                    <i class="glyphicon glyphicon-edit"></i>
-                        借款申请
-                </h2>
+                <div class="well well-sm">
+                    <span><h4>剩余借款额度</h3></span>
+                    <strong >{{ Auth::user()->quota }} .00 元</strong>
+                </div>
                 <hr>
                 @include('common.error')
 

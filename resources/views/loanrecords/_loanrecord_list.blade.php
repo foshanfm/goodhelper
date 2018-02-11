@@ -9,21 +9,25 @@
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-question-sign glyphicon-align-left" aria-hidden="true"></span>
                 @break
+
             @case(2)
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <span class=“” aria-hidden="true"><strong>￥</strong></span>
+                @break
+
+            @case(3)
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-ok-sign glyphicon-align-left" aria-hidden="true"></span>
                 @break
-            @case(3)
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <span class="glyphicon glyphicon-minus-sign glyphicon-align-left" aria-hidden="true"></span>
-                @break
+
             @case(4)
                 <div class="panel panel-danger">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-remove-sign glyphicon-align-left" aria-hidden="true"></span>
                 @break
+
             @default
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -39,13 +43,13 @@
         <ul class="list-group">
           <li class="list-group-item">
               <span>申请时间：{{ $loanrecord->created_at->format('Y-m-d') }}</span>
-              <small class="pull-right">3 days ago</small>
+              <small class="pull-right">{{ $loanrecord->created_at->diffForHumans() }}</small>
           </li>
           <li class="list-group-item">借款金额：{{ $loanrecord->loan }}.00 元</li>
           <li class="list-group-item">借款天数：借 {{ $loanrecord->day }} 天</li>
         </ul>
         <div class="panel-footer">
-            <span>入账银行卡（*888）</span>
+            <span>入账银行卡（*{{ substr($loanrecord->user->banknum,-4) }}）</span>
         </div>
     </div>
     @endforeach

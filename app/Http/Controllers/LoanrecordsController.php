@@ -57,21 +57,21 @@ class LoanrecordsController extends Controller
 	// 	return view('loanrecords.create_and_edit', compact('loanrecord'));
 	// }
 
-	public function update(LoanrecordRequest $request, Loanrecord $loanrecord)
-	{
-		$this->authorize('update', $loanrecord);
-		$loanrecord->update($request->all());
+	// public function update(LoanrecordRequest $request, Loanrecord $loanrecord)
+	// {
+	// 	$this->authorize('update', $loanrecord);
+	// 	$loanrecord->update($request->all());
+    //
+	// 	return redirect()->route('loanrecords.show', $loanrecord->id)->with('message', 'Updated successfully.');
+	// }
 
-		return redirect()->route('loanrecords.show', $loanrecord->id)->with('message', 'Updated successfully.');
-	}
-
-	public function destroy(Loanrecord $loanrecord)
-	{
-		$this->authorize('destroy', $loanrecord);
-		$loanrecord->delete();
-
-		return redirect()->route('loanrecords.index')->with('message', 'Deleted successfully.');
-	}
+	// public function destroy(Loanrecord $loanrecord)
+	// {
+	// 	$this->authorize('destroy', $loanrecord);
+	// 	$loanrecord->delete();
+    //
+	// 	return redirect()->route('loanrecords.index')->with('message', 'Deleted successfully.');
+	// }
 
 
 }
