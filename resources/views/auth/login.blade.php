@@ -57,7 +57,11 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    忘记密码?
+                                    <small>忘记密码?</small>
+                                </a>
+
+                                <a class="btn btn-link" href="{{ route('register') }}">
+                                    <small>还没注册?</small>
                                 </a>
                             </div>
                         </div>

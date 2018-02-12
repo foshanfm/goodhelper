@@ -55,5 +55,9 @@
     @endforeach
 
 @else
-   <div class="empty-block">暂无数据 ~_~ </div>
+   <div class="empty-block">
+       <div class="well">
+           <h4 class="text-center">暂无数据</h4>
+       </div>
+   </div>
 @endif

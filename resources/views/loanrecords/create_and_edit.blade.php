@@ -7,7 +7,8 @@
 
             <div class="panel-body">
                 <div class="well well-sm">
-                    <span><h4>剩余借款额度</h3></span>
+                    <span class="d-inline"><h4>剩余借款额度</h4></span>
+                    <span class="glyphicon glyphicon-info-sign"></span>
                     <strong >{{ Auth::user()->quota }} .00 元</strong>
                 </div>
                 <hr>
@@ -33,6 +34,11 @@
             </div>
         </div>
     </div>
+    <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    </script>
 
 
 @endsection

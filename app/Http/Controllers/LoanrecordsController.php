@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoanrecordRequest;
 use Auth;
 use App\Http\Controllers\Loanrecords;
+use App\Rules\CreditQuotaRule;
 
 class LoanrecordsController extends Controller
 {
@@ -21,10 +22,13 @@ class LoanrecordsController extends Controller
     //     $loanrecords = loanrecord::with('user', 'category')->paginate(30);
     //     return view('loanrecords.index', compact('loanrecords'));
 	// }
+
+
     public function index(Loanrecord $loanrecord)
     {
            $id = Auth::id();
            $loanrecord = Loanrecord::where('user_id', $id)
+                                  ->latest()
                                   ->get();
 
         return view('loanrecords.index',compact('loanrecord'));
@@ -42,13 +46,17 @@ class LoanrecordsController extends Controller
 
 	public function store(LoanrecordRequest $request, Loanrecord $loanrecord)
 	{
-        $loanrecord->fill($request->all());
-        $loanrecord->user_id = Auth::id();
-        $loanrecord->order_id = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
-        $loanrecord->category_id = 1;
-        $loanrecord->save();
+        if ($request->loan < Auth::user()->quota ) {
+                $loanrecord->fill($request->all());
+                $loanrecord->user_id = Auth::id();
+                $loanrecord->order_id = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+                $loanrecord->category_id = 1;
+                $loanrecord->save();
+                return redirect()->route('loanrecords.show', $loanrecord->id)->with('success', '申请完成，请等待审核。');
+        } else {
+            return back()->with('danger', '超过可用信用额度，请重新输入。');
+        }
 
-        return redirect()->route('loanrecords.show', $loanrecord->id)->with('message', 'Created successfully.');
     }
 
 	// public function edit(Loanrecord $loanrecord)

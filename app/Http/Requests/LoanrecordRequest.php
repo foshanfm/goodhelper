@@ -21,6 +21,8 @@ class LoanrecordRequest extends Request
             {
                 return [
                     // UPDATE ROLES
+                    'loan'       => 'required|numeric|',
+                    'day'        => 'required|numeric|',
                 ];
             }
             case 'GET':
