@@ -31,7 +31,7 @@
                         <h3>修改个人账户</h3>
                     </a>
                     <a href="#" class="btn btn-default btn-block">
-                        <h3>借款记录</h3>
+                        <h3>我要还款</h3>
                     </a>
                 </div>
             </div>
