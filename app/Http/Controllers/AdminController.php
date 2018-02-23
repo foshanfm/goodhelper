@@ -13,11 +13,28 @@ use App\Models\Category;
 class AdminController extends Controller
 {
     //
-    public function adminroot(Loanrecord $loanrecord)
+    public function adminRoot()
     {
-
-     $loanrecord = Loanrecord::with('user', 'category')->paginate(30);
-
-     return view('loanrecords.index',compact('loanrecord'));
+     return view('admin.index');
     }
+
+    public function adminReview(Loanrecord $loanrecord)
+    {
+        $id = 1;
+        $loanrecord = Loanrecord::with('user', 'category')->where('category_id',$id)->paginate(30);
+        return view('admin.review',compact('loanrecord'));
+    }
+
+    public function adminAllow(Loanrecord $loanrecord)
+    {
+        if ($loanrecord->id)
+                {
+                session()->flash('success', '放款成功');
+            } else {
+                session()->flash('danger','放款失败');
+            };
+
+        return back();
+    }
+
 }

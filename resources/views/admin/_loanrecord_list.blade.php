@@ -2,45 +2,23 @@
 
     @foreach ($loanrecords as $loanrecord)
 
-
-        @switch( $loanrecord->category_id )
-            @case(1)
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <span class="glyphicon glyphicon-question-sign glyphicon-align-left" aria-hidden="true"></span>
-                @break
-
-            @case(2)
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <span class=“” aria-hidden="true"><strong>￥</strong></span>
-                @break
-
-            @case(3)
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <span class="glyphicon glyphicon-ok-sign glyphicon-align-left" aria-hidden="true"></span>
-                @break
-
-            @case(4)
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <span class="glyphicon glyphicon-remove-sign glyphicon-align-left" aria-hidden="true"></span>
-                @break
-
-            @default
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <span class="glyphicon glyphicon-eye-close glyphicon-align-left" aria-hidden="true"></span>
-        @endswitch
-
-
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-question-sign glyphicon-align-left" aria-hidden="true"></span>
             <span>{{ $loanrecord->category->name }}</span>
+            <form action="{{ route('admin.allow', $loanrecord->id) }}" method="post" style="display: inline;">
+                {{ csrf_field() }}
+                <!-- <button class="btn btn-default btn-sm pull-right btn-danger" type="submit" style="margin-left: 6px">拒绝</button> -->
+                <button class="btn btn-default btn-sm pull-right btn-success" type="submit" >放款</button>
+            </form>
         </div>
         <!-- <div class="panel-body">
 
         </div> -->
         <ul class="list-group">
+          <li class="list-group-item">
+              <span>借款人：{{ $loanrecord->user->name }}</span>
+          </li>
           <li class="list-group-item">
               <span>申请时间：{{ $loanrecord->created_at->format('Y-m-d') }}</span>
               <small class="pull-right">{{ $loanrecord->created_at->diffForHumans() }}</small>

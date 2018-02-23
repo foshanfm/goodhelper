@@ -36,3 +36,5 @@ Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 // 后台放款列表
 Route::get('admin/','AdminController@adminRoot')->name('admin.index');
+Route::get('admin/review','AdminController@adminReview')->name('admin.review');
+Route::post('admin/review','AdminController@adminAllow')->name('admin.allow');

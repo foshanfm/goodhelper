@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Loanrecord extends Model
 {
-    protected $fillable = ['day', 'loan', ];
+    protected $fillable = ['day', 'loan', 'category_id'];
 
     public function category()
     {
