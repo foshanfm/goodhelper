@@ -13,12 +13,7 @@
                 <div class="well well-sm">
                     <div class="row">
                         <div class="col-md-6">
-                            <a class="btn btn-link" href="{{ url('/') }}"><i class="glyphicon glyphicon-backward"></i> Back</a>
-                        </div>
-                        <div class="col-md-6">
-                             <a class="btn btn-sm btn-warning pull-right" href="{{ route('loanrecords.edit', $loanrecord->id) }}">
-                                <i class="glyphicon glyphicon-edit"></i> 编辑
-                            </a>
+                            <a class="btn btn-link" href="{{ url('/') }}"><i class="glyphicon glyphicon-backward"></i> 返回首页</a>
                         </div>
                     </div>
                 </div>
@@ -36,10 +31,10 @@
                     <p>
                     	{{ $loanrecord->loan }}.00 元
                     </p>
-                <label>还款状态</label>
+                <!-- <label>还款状态</label>
                     <p>
                     	{{ $loanrecord->repayment_id }}
-                    </p>
+                    </p> -->
             </div>
         </div>
     </div>

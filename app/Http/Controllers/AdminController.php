@@ -25,9 +25,12 @@ class AdminController extends Controller
         return view('admin.review',compact('loanrecord'));
     }
 
-    public function adminAllow(Loanrecord $loanrecord)
+    public function update(Request $request,Loanrecord $loanrecord)
     {
-        if ($loanrecord->id)
+        $id = $request->id;
+
+        if ($loanrecord -> where('id', $id )
+                        ->update(['category_id' => 2]))
                 {
                 session()->flash('success', '放款成功');
             } else {

@@ -6,10 +6,11 @@
         <div class="panel-heading">
             <span class="glyphicon glyphicon-question-sign glyphicon-align-left" aria-hidden="true"></span>
             <span>{{ $loanrecord->category->name }}</span>
-            <form action="{{ route('admin.allow', $loanrecord->id) }}" method="post" style="display: inline;">
+            <form action="{{ route('admin.review') }}" method="post" style="display: inline;">
                 {{ csrf_field() }}
+                {{ method_field('PATCH') }}
                 <!-- <button class="btn btn-default btn-sm pull-right btn-danger" type="submit" style="margin-left: 6px">拒绝</button> -->
-                <button class="btn btn-default btn-sm pull-right btn-success" type="submit" >放款</button>
+                <button class="btn btn-default btn-sm pull-right btn-success" type="submit" name="id" value="{{ $loanrecord->id }}">放款</button>
             </form>
         </div>
         <!-- <div class="panel-body">
