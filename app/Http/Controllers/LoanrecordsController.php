@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoanrecordRequest;
 use Auth;
 use App\Http\Controllers\Loanrecords;
-use App\Rules\CreditQuotaRule;
+use App\Models\Category;
 
 class LoanrecordsController extends Controller
 {
@@ -46,7 +46,7 @@ class LoanrecordsController extends Controller
 
 	public function store(LoanrecordRequest $request, Loanrecord $loanrecord)
 	{
-        if ($request->loan < Auth::user()->quota ) {
+        if ($request->loan <= Auth::user()->quota ) {
                 $loanrecord->fill($request->all());
                 $loanrecord->user_id = Auth::id();
                 $loanrecord->order_id = date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
@@ -57,6 +57,17 @@ class LoanrecordsController extends Controller
             return back()->with('danger', '超过可用信用额度，请重新输入。');
         }
 
+    }
+
+    public function payback(Loanrecord $loanrecord)
+    {
+        $loanstatus = 2;
+        $id = Auth::id();
+        $loanrecord = Loanrecord::where([['user_id', $id],
+                                         ['category_id',$loanstatus],])
+                               ->latest()
+                               ->get();
+        return view('loanrecords.payback',compact('loanrecord'));
     }
 
 	// public function edit(Loanrecord $loanrecord)

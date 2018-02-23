@@ -29,4 +29,10 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 Route::resource('loanrecords', 'LoanrecordsController', ['only' => ['index','show','create', 'store', 'update', 'edit', 'destroy']]);
+
+// 还钱列表
+Route::get('payback','LoanrecordsController@payBack')->name('loanrecords.payback');
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
+// 后台放款列表
+Route::get('admin/','AdminController@adminRoot')->name('admin.index');
